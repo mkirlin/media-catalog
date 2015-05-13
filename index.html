@@ -9,6 +9,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
+        <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
         <script src="index.js"></script>
         <link rel="stylesheet" type="text/css" href="index.css">
 
@@ -19,23 +21,23 @@
 
         <div class="container">
 
-            <div class="row">
+            <div class="row log-in">
                 <h1 class="jumbotron">Media Catalog</h1>
                 <div class="col-sm-offset-3 col-sm-6">
-                    <form class="form-horizontal">
+                    <form class="sign-in form-horizontal">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                            <label for="inputEmail" class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-6">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                <input type="email" class="form-control" id="inputEmail">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                            <label for="inputPassword" class="col-sm-3 control-label">Password</label>
                             <div class="col-sm-6">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                <input type="password" class="form-control" id="inputPassword">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group sign-in-button">
                             <div class="col-sm-offset-3 col-sm-6">
                                 <button type="submit" class="btn btn-primary">Sign in</button>
                           </div>
@@ -44,7 +46,8 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row main-site">
+                <br>
                 <div class="row">
                     <!-- Row of buttons letting users add user, add item, or sign out -->
                     <button class="btn btn-primary">Sign Out</button>
