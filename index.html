@@ -78,11 +78,12 @@
                 </div>
                 <table class="table table-hover">
                     <thead>
-                        <th class='center'>
+                        <!-- TODO: Maybe add image uploading, scaling, and display -->
+                        <!-- <th class='center'>
                             <a href="#">
                                 Image
                             </a>
-                        </th>
+                        </th> -->
                         <th class='center'>
                             <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
                                 Name
@@ -110,9 +111,9 @@
                     </thead>
                     <tbody class="items-table" ng-repeat="item in items | orderBy:sortType:sortReverse | filter:currentFilter">
                         <tr>
-                            <td class='center'>
+                            <!-- <td class='center'>
                                 
-                            </td>
+                            </td> -->
                             <td class='center'>
                                 {{item.name}}
                             </td>
