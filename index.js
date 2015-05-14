@@ -5,6 +5,8 @@ MediaCatalog.controller('CatalogCtrl', function CatalogCtrl($scope, $firebaseAut
     var db = new Firebase(url);
     $scope.auth = $firebaseAuth(db);
     $scope.items = $firebaseArray(new Firebase(url + 'items'))
+    $scope.sortType     = 'name'; // set the default sort type
+    $scope.sortReverse  = false;  // set the default sort order
 
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
