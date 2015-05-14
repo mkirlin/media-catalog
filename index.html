@@ -56,12 +56,17 @@
             </div>
             <br>
             <div class="row">
-                <!-- TODO: search bar -->
-                <input type="search" class="form-control input-lg" placeholder="Search for a movie, book, tv show, or comic.">
+                <input type="search" ng-model="searchText" ng-keyup="currentFilter = searchText" class="form-control input-lg" placeholder="Search for a movie, book, tv show, or comic.">
             </div>
             <br>
             <div class="row">
-                <!-- TODO: buttons to sort the content by type -->
+                <h4>Filter by type:</h4> 
+                <button class="btn btn-default" ng-click="currentFilter = ''">All</button>
+                <button class="btn btn-default" ng-click="currentFilter = {type: 'Movie'}">Movies</button>
+                <button class="btn btn-default" ng-click="currentFilter = {type: 'TV Show'}">TV Shows</button>
+                <button class="btn btn-default" ng-click="currentFilter = {type: 'Book'}">Books</button>
+                <button class="btn btn-default" ng-click="currentFilter = {type: 'Comic'}">Comics</button>
+                <button class="btn btn-default" ng-click="currentFilter = {type: 'Music'}">Music</button>
             </div>
             <br>
             <div class="row">
@@ -80,7 +85,7 @@
                         <th class='center'>Description</th>
                         <th class='center'>Delete</th>
                     </thead>
-                    <tbody class="items-table" ng-repeat="item in items">
+                    <tbody class="items-table" ng-repeat="item in items | filter:currentFilter">
                         <tr>
                             <td class='center'>
                                 
