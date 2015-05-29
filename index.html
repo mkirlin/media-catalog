@@ -60,7 +60,7 @@
             </div>
             <br>
             <div class="row">
-                <h4>Filter by type:</h4> 
+                <h4>Filter by type:</h4>
                 <button class="btn btn-default" ng-click="currentFilter = ''">All</button>
                 <button class="btn btn-default" ng-click="currentFilter = {type: 'Movie'}">Movies</button>
                 <button class="btn btn-default" ng-click="currentFilter = {type: 'TV Show'}">TV Shows</button>
@@ -83,26 +83,31 @@
                                 Image
                             </a>
                         </th> -->
-                        <th class='center'>
+                        <th class='center col-sm-3'>
                             <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
                                 Name
                                 <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                                 <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
                             </a>
                         </th>
-                        <th class='center'>
+                        <th class='center col-sm-1'>
                             <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse">
                                 Type
                                 <span ng-show="sortType == 'type' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                                 <span ng-show="sortType == 'type' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
                             </a>
                         </th>
-                        <th class='center'>
+                        <th class='center col-sm-6'>
                             <a href="#">
                                 Description
                             </a>
                         </th>
-                        <th class='center'>
+                        <th class='center col-sm-1'>
+                            <a href="#">
+                                Edit
+                            </a>
+                        </th>
+                        <th class='center col-sm-1'>
                             <a href="#">
                                 Delete
                             </a>
@@ -110,21 +115,20 @@
                     </thead>
                     <tbody class="items-table" ng-repeat="item in items | orderBy:sortType:sortReverse | filter:currentFilter">
                         <tr>
-                            <!-- <td class='center'>
-                                
-                            </td> -->
                             <td class='center'>
                                 {{item.name}}
                             </td>
                             <td class='center'>
                                 {{item.type}}
                             </td>
-                            <td class='center'>
-                            <!-- <td> -->
+                            <td style="text-align:justify;">
                                 {{item.description}}
                             </td>
+                            <td class="center">
+                                <a href="#"><span style="font-size:1.3em;" ng-click="openEditModal(item)" class="glyphicon glyphicon-edit" aria-hidden="true"></a>
+                            </td>
                             <td class='center'>
-                                <a href="#"><span ng-click="deleteItem()" class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                <a href="#"><span style="font-size:1.5em;" ng-click="deleteItem(item)" class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                             </td>
                         </tr>
                     </tbody>
@@ -189,7 +193,7 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" id="type" name="type" ng-model="itemType">
                                         <option value="Movie">Movie</option>
-                                        <option value="TV Show">TV Show</option>
+                                        <option value="TV">TV</option>
                                         <option value="Book">Book</option>
                                         <option value="Comic">Comic</option>
                                         <option value="Music">Music</option>
@@ -211,6 +215,55 @@
                                 {{ error }}
                             </div>
                             <button ng-click="addItem()" class="btn btn-success">Save Item</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" id="myModalLabel">Edit Item</h3>
+                    </div>
+                    <form class="add-item form-horizontal">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="addName" class="col-sm-3 control-label">Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" ng-model="editName" class="form-control" id="name" name="name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="addType" class="col-sm-3 control-label">Type</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="type" name="type" ng-model="editType">
+                                        <option value="Movie">Movie</option>
+                                        <option value="TV">TV</option>
+                                        <option value="Book">Book</option>
+                                        <option value="Comic">Comic</option>
+                                        <option value="Music">Music</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="addDescription" class="col-sm-3 control-label">Description</label>
+                                <div class="col-sm-8">
+                                    <textarea rows="8" ng-model="editDescription" class="form-control" id="description" name="description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div ng-if="error" class="alert alert-danger center">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                {{ error }}
+                            </div>
+                            <button ng-click="editItem(editingItem)" class="btn btn-success">Save Item</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>

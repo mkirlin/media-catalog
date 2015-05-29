@@ -19,14 +19,40 @@ MediaCatalog.controller('CatalogCtrl', function CatalogCtrl($scope, $firebaseAut
             description: $scope.itemDescription
         }).then(function() {
             $('#addItemModal').modal('hide')
+            $scope.itemName =''
+            $scope.itemType =''
+            $scope.itemDescription =''
             $scope.alert = 'Item added.'
         }).catch(function(error) {
             $scope.error = error.message;
         });
     };
 
-    $scope.deleteItem = function() {
-        var item = $scope.items[this.$index]
+    $scope.openEditModal = function(item) {
+        $('#editItemModal').modal('show')
+        $scope.editingItem = item
+        $scope.editName = item.name
+        $scope.editType = item.type
+        $scope.editDescription = item.description
+    };
+
+    $scope.editItem = function(item) {
+        item.name = $scope.editName
+        item.type = $scope.editType
+        item.description = $scope.editDescription
+        $scope.items.$save(item).then(function() {
+            $scope.editingItem = null
+            $scope.editName =''
+            $scope.editType =''
+            $scope.editDescription =''
+            $scope.alert = 'Item edited.'
+            $('#editItemModal').modal('hide')
+        }).catch(function(error) {
+            $scope.error = error.message;
+        });
+    }
+
+    $scope.deleteItem = function(item) {
         $scope.items.$remove(item).then(function() {
             $scope.alert = 'Item deleted.'
         }).catch(function(error) {
