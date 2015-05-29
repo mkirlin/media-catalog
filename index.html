@@ -128,7 +128,7 @@
                                 <a href="#"><span style="font-size:1.3em;" ng-click="openEditModal(item)" class="glyphicon glyphicon-edit" aria-hidden="true"></a>
                             </td>
                             <td class='center'>
-                                <a href="#"><span style="font-size:1.5em;" ng-click="deleteItem(item)" class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                <a href="#"><span style="font-size:1.5em;" ng-click="openDeleteModal(item)" class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                             </td>
                         </tr>
                     </tbody>
@@ -136,12 +136,12 @@
             </div>
         </div>
 
-        <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Add User</h3>
+                        <h3 class="modal-title" id="addUserModalLabel">Add User</h3>
                     </div>
                     <form class="add-user form-horizontal">
                         <div class="modal-body">
@@ -173,12 +173,12 @@
             </div>
         </div>
 
-        <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Add New Item</h3>
+                        <h3 class="modal-title" id="addItemModalLabel">Add New Item</h3>
                     </div>
                     <form class="add-item form-horizontal">
                         <div class="modal-body">
@@ -222,12 +222,12 @@
             </div>
         </div>
 
-        <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Edit Item</h3>
+                        <h3 class="modal-title" id="editItemModalLabel">Edit Item</h3>
                     </div>
                     <form class="add-item form-horizontal">
                         <div class="modal-body">
@@ -267,6 +267,30 @@
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="deleteItemModal" tabindex="-1" role="dialog" aria-labelledby="deleteItemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" id="deleteItemModalLabel">Delete Item</h3>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this item?
+                    </div>
+                    <div class="modal-footer">
+                        <div ng-if="error" class="alert alert-danger center">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ error }}
+                        </div>
+                        <button ng-click="deleteItem(deletingItem)" class="btn btn-success">Delete</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>

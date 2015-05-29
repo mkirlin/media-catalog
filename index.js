@@ -52,8 +52,14 @@ MediaCatalog.controller('CatalogCtrl', function CatalogCtrl($scope, $firebaseAut
         });
     }
 
+    $scope.openDeleteModal = function(item) {
+        $('#deleteItemModal').modal('show')
+        $scope.deletingItem = item
+    };
+
     $scope.deleteItem = function(item) {
         $scope.items.$remove(item).then(function() {
+            $('#deleteItemModal').modal('hide')
             $scope.alert = 'Item deleted.'
         }).catch(function(error) {
             $scope.error = error.message;
