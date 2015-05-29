@@ -105,4 +105,8 @@ MediaCatalog.controller('CatalogCtrl', function CatalogCtrl($scope, $firebaseAut
             }
         });
     };
+
+    $scope.bulkAddItems = function() {
+        // Takes CSV file, item type, and name format and adds items to list
+    }
 })
